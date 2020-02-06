@@ -3,12 +3,13 @@
     stages {
     
       stage ('build & SonarQube analysis'){    
+	tools {
+        	sonarQube 'SonarQube Scanner 2.11'
+	}
         steps {
-          script{
-            withSonarQubeEnv(credentialsId: 'b7dabfdc-19d0-4e2a-ab23-4ed5e17dd9c1') {
-                
-			}
-          } 
+          	withSonarQubeEnv('SonarQube Scanner') {
+          	sh 'sonar-scanner'
+        	} 
         }        
 	  }		
     }
