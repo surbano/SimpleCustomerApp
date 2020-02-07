@@ -9,8 +9,8 @@
 			// Se invoca la ejecución del Sonnar Scanner con el token
 			withSonarQubeEnv(credentialsId: 'b7dabfdc-19d0-4e2a-ab23-4ed5e17dd9c1') {
 			sh "${scannerHome}/bin/sonar-scanner " +				
-			    "-Dsonar.projectKey=ProjectName-${GIT_BRANCH} " +
-			    "-Dsonar.projectName=ProjectName-${GIT_BRANCH} " +
+			    "-Dsonar.projectKey=${GIT_BRANCH} " +
+			    "-Dsonar.projectName=${GIT_BRANCH} " +
 			    "-Dsonar.projectVersion=0.0.0 " +
 			    "-Dsonar.sources=/var/lib/jenkins/workspace/pipeline-demo/SimpleCustomerApp/src " +
 			    "-Dsonar.sourceEncoding=UTF-8"
