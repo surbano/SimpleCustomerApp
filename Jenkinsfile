@@ -1,22 +1,25 @@
-def userInput
-try {
-    userInput = input(
-        id: 'Proceed1', message: 'Was this successful?', parameters: [
-        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
-        ])
-} catch(err) { // input false
-    def user = err.getCauses()[0].getUser()
-    userInput = false
-    echo "Aborted by: [${user}]"
-}
 
-node {
-    if (userInput == true) {
-        // do something
-        echo "this was successful"
-    } else {
-        // do something else
-        echo "this was not successful"
-        currentBuild.result = 'FAILURE'
-    } 
+The accepted answer wouldn't fail the stage or even mark it as unstable. It is now possible to fail a stage, continue the execution of the pipeline and choose the result of the build:
+
+pipeline {
+    agent any
+    stages {
+        stage('1') {
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('2') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh "exit 1"
+                }
+            }
+        }
+        stage('3') {
+            steps {
+                sh 'exit 0'
+            }
+        }
+    }
 }
