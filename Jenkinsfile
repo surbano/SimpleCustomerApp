@@ -14,7 +14,7 @@
 	 
       stage ('Owasp ZAP Analysis'){
 		steps {			
-			timeout(activity: true, time: 3 {
+			timeout(activity: true, time: 3) {
 				build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true   
 				
 			}
