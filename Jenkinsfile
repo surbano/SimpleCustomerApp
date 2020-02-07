@@ -6,7 +6,7 @@
 		script{
 			// Se obtiene el nombre del sonarscanner declarado de las variables globales del Jenkins
 			def scannerHome = tool 'sonarqube-scanner';
-			// Se invoca la ejecución del Sonnar Scanner con el token
+			// Se invoca la ejecución del Sonnar Scanner con el token y sus propiedades
 			withSonarQubeEnv(credentialsId: 'b7dabfdc-19d0-4e2a-ab23-4ed5e17dd9c1') {
 			sh "${scannerHome}/bin/sonar-scanner " +				
 			    "-Dsonar.projectKey=Valaxy " +
