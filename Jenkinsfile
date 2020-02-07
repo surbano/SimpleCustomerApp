@@ -1,22 +1,27 @@
-pipeline {
+  pipeline { 
     agent any
-    stages {
-        stage('1') {
-            steps {
-                sh 'exit 0'
-            }
-        }
-        stage('2') {
-            steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh "exit 1"
-                }
-            }
-        }
-        stage('3') {
-            steps {
-                sh 'exit 0'
-            }
-        }
+    stages {    
+      stage ('SonarQube Analysis'){   
+        steps {
+		script{
+			def scannerHome = tool 'sonarqube-scanner';
+			withSonarQubeEnv(credentialsId: 'b7dabfdc-19d0-4e2a-ab23-4ed5e17dd9c1') {
+			sh "${scannerHome}/bin/sonar-scanner"
+			} 
+		}
+        }        
+      }
+	 
+      stage ('Owasp ZAP Analysis'){
+	steps {			
+		catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+			build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true   
+		}
+		catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+			sh 'fallo sonar'
+		}
+	}
+	 
+      }
     }
-}
+  }
