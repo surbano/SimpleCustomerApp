@@ -34,17 +34,22 @@
 					subject: "Fallo Quality Gate Pipeline: ${currentBuild.fullDisplayName}",
 					body: "Revisar: ${env.BUILD_URL}"
 				}
-				else {
-					def pipelineOwaspZap = load "owaspzap"
-					pipelineOwaspZap.someMethod()
-				
-				}
 				
 			}
 			
 		}
 	 
       }
-	 // aquí iba el stage de owaspzap
+	def jenkinsFile    
+      stage ('Analisis OwaspZap'){
+		//steps {			
+			// Se ejecuta la tarea "prueba-demo1" del Jenkins de manera externa la cual contiene el owaszap configurado 
+			//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true   
+			jenkinsFile = fileLoader.fromGit('owaspzap', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
+			
+		//}
+	 
+      }
+	    jenkinsFile.start()
     }
   }
