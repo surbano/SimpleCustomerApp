@@ -3,7 +3,7 @@
     stages {
     
       stage ('build & SonarQube analysis'){    
-		agent any
+		//agent any
         steps {
 		script{
 			def scannerHome = tool 'sonarqube-scanner';
@@ -14,9 +14,9 @@
         }        
 	  }
 	 
-	 stage ('Owasp ZAP Analysis'){
-		agent any
-		steps {
+	 //stage ('Owasp ZAP Analysis'){
+		//agent any
+		//steps {
 		//script{
 			//def zapHome = tool 'ZAP_2.9.0';
 			//startZap(host: "localhost", port: 5555, timeout:500, zapHome: "/opt/ZAP/", allowedHosts:['http://testphp.vulnweb.com/'])
@@ -26,10 +26,10 @@
             //         bash ${zapHome}/zapscan.sh
             //      '''
 			
-			build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: false
+			//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: false
         //}      
-		}
+		//}
 	 
-	 }
+	 //}
     }
   }
