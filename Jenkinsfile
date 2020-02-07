@@ -12,7 +12,7 @@
 			    "-Dsonar.projectKey=ProjectName-${GIT_BRANCH} " +
 			    "-Dsonar.projectName=ProjectName-${GIT_BRANCH} " +
 			    "-Dsonar.projectVersion=0.0.0 " +
-			    "-Dsonar.sources=**/src " +
+			    "-Dsonar.sources=/var/lib/jenkins/workspace/pipeline-demo/SimpleCustomerApp/src " +
 			    "-Dsonar.sourceEncoding=UTF-8"
 				
 			} 
