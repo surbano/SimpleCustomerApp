@@ -26,7 +26,7 @@
             //         bash ${zapHome}/zapscan.sh
             //      '''
 			
-			build 'prueba-demo1'
+			build job:  '/prueba-demo1'
         }      
 		}
 	 
