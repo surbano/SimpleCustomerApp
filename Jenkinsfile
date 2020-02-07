@@ -18,13 +18,15 @@
 		agent any
 		steps {
 		script{
-			def zapHome = tool 'ZAP_2.9.0';
+			//def zapHome = tool 'ZAP_2.9.0';
 			//startZap(host: "localhost", port: 5555, timeout:500, zapHome: "/opt/ZAP/", allowedHosts:['http://testphp.vulnweb.com/'])
        
-			sh '''
-                 export ARCHERY_HOST=http://testphp.vulnweb.com/
-                     bash ${zapHome}/zapscan.sh
-                  '''
+			//sh '''
+            //     export ARCHERY_HOST=http://testphp.vulnweb.com/
+            //         bash ${zapHome}/zapscan.sh
+            //      '''
+			
+			build 'prueba-demo1'
         }      
 		}
 	 
