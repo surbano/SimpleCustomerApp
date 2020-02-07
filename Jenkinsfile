@@ -19,7 +19,7 @@
 				def qg = waitForQualityGate()
 				if (qg.status != 'OK') {
 					error "Pipeline abortado debido a la falla del QG: ${qg.status}"
-					mail to: 'sergio.urbano@iteraprocess.com',
+					mail to: 'sergioub@gmail.com',
 					subject: "Fallo Quality Gate Pipeline: ${currentBuild.fullDisplayName}",
 					body: "Revisar: ${env.BUILD_URL}"
 				}
