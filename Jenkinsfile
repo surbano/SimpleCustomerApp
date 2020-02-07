@@ -18,7 +18,7 @@
 		script{
 			def zapHome = tool 'ZAP_2.9.0';
 			startZap(host: "localhost", port: 5555, timeout:500, zapHome: "/opt/ZAP/", allowedHosts:['http://testphp.vulnweb.com/'])
-                
+        }      
 		}
 	 
 	 }
