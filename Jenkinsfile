@@ -1,6 +1,3 @@
-
-The accepted answer wouldn't fail the stage or even mark it as unstable. It is now possible to fail a stage, continue the execution of the pipeline and choose the result of the build:
-
 pipeline {
     agent any
     stages {
