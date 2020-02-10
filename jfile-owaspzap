@@ -5,7 +5,7 @@ def someMethod(varResultado) {
 	
 	def response = httpRequest 'http://testphp.vulnweb.com/'
 		
-	echo response.status
+	echo response.status.toString()
 	echo response.content
 	
 	if(varResultado == 'OK'){
