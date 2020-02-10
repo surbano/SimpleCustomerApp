@@ -46,7 +46,7 @@ pipeline {
 	 
       }
       
-      stage ('Cargando Jenkins file'){
+      stage ('Ejecutando Jenkinsfile OWASPZAP'){
 	      
 		steps {
 			script {
