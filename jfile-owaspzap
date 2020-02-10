@@ -1,10 +1,12 @@
-def someMethod(varResultado) {
-    
-    environment{
+environment{
         CHECK_URL = "https://stackoverflow.com"
         CMD = "curl --write-out %{http_code} --silent --output /dev/null ${CHECK_URL}"
 
     }
+
+def someMethod(varResultado) {
+    
+    
 	echo varResultado
 	
 	sh "${CMD} > commandResult"
