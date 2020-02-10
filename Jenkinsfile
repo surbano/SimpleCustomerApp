@@ -31,6 +31,7 @@ pipeline {
 			script {
 				// Se define la escucha del Quality Gates ejecutado en el Sonar Scanner
 				def qg = waitForQualityGate()
+				varOwaspzap = qg.status
 				// Se compara el Status, si no es "OK" muestra un mensaje
 				if (qg.status != 'OK') {
 					error "Pipeline abortado debido a la falla del QG: ${qg.status}"
@@ -49,8 +50,7 @@ pipeline {
 	      
 		steps {
 			script {
-				pipOwaspzap = load "jkile-owaspzap"
-				varOwaspzap = "MSG_RESULT_POR_DEFINIR"			
+				pipOwaspzap = load "jkile-owaspzap"		
 			}
 			echo 'Cargando Jenkins file'
 		}
