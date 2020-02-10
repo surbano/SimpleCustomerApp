@@ -1,6 +1,7 @@
-  node { 
+def jenkinsFile  
+pipeline { 
     agent any
-    //def jenkinsFile
+
     stages {    
       stage ('Analisis de Codigo'){   
         steps {
@@ -43,7 +44,7 @@
       }
       
       stage ('Cargando Jenkins file'){
-	      //jenkinsFile = fileLoader.fromGit('owaspzap.Jenkinsfile', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
+	      jenkinsFile = fileLoader.fromGit('owaspzap.Jenkinsfile', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
 		steps {
 			script {
 				
@@ -54,6 +55,7 @@
 		}
 	 
       }
-	//jenkinsFile.start()    
+	
     }
   }
+jenkinsFile.start()    
