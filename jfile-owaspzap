@@ -1,15 +1,15 @@
-def someMethod(varResultado) {
-    
+def someMethod(varResultado) {    
     
 	echo varResultado
 	
 	def response = httpRequest 'http://testphp.vulnweb.com/'
 		
 	echo response.status.toString()
-	echo response.content
+	//echo response.content
 	
-	if(varResultado == 'OK'){
-		//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
+	if(varResultado == 'OK' && response.status == 200){
+		echo 'Inicio OWASPZAP'
+		build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
 	}	
 }
 
