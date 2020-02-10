@@ -1,5 +1,8 @@
 node { 
-	echo 'mariko'
+	stage 'Checkout'
+        checkout scm
+	
+	//echo 'mariko'
     //stages {    	  
 	 
       //stage ('Owasp ZAP Analysis'){
