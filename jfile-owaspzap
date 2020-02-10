@@ -1,8 +1,13 @@
 def someMethod(varResultado) {
     
+    environment{
+        CHECK_URL = "https://stackoverflow.com"
+        CMD = "curl --write-out %{http_code} --silent --output /dev/null ${CHECK_URL}"
+
+    }
 	echo varResultado
-	if(varResultado == 'OK'){
-		build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
+	if(varResultado != null && == 'OK'){
+		//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
 	}	
 }
 
