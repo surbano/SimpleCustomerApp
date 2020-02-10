@@ -2,7 +2,7 @@ node {
 	agent none
 	
 	//echo 'mariko'
-    //stages {    	  
+    stages {    	  
 	 
       stage ('Owasp ZAP Analysis'){
 	      //steps {		
@@ -13,5 +13,5 @@ node {
         //}
 	 
       }
-    //}
+    }
   }
