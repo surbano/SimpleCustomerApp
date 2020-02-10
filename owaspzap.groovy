@@ -1,3 +1,12 @@
+def someMethod() {
+    //do something
+	echo 'mariko
+}
+
+return this
+
+/*
+
 node { 
 	agent none
 	
@@ -15,3 +24,4 @@ node {
       }
     }
   }
+*/
