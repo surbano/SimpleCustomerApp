@@ -1,4 +1,4 @@
-node { 
+//node { 
 	echo 'mariko'
     //stages {    	  
 	 
@@ -12,4 +12,4 @@ node {
 	 
       //}
     //}
-  }
+  //}
