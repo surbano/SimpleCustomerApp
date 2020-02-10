@@ -1,6 +1,6 @@
-  pipeline { 
+  node { 
     agent any
-def jenkinsFile
+    //def jenkinsFile
     stages {    
       stage ('Analisis de Codigo'){   
         steps {
@@ -43,17 +43,17 @@ def jenkinsFile
       }
       
       stage ('Cargando Jenkins file'){
-	      jenkinsFile = fileLoader.fromGit('owaspzap.Jenkinsfile', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
-		//steps {
-			//script {
+	      //jenkinsFile = fileLoader.fromGit('owaspzap.Jenkinsfile', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
+		steps {
+			script {
 				
 			// Se ejecuta la tarea "prueba-demo1" del Jenkins de manera externa la cual contiene el owaszap configurado 
 			//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true   
 			
-			//}
-		//}
+			}
+		}
 	 
       }
-	jenkinsFile.start()    
+	//jenkinsFile.start()    
     }
   }
