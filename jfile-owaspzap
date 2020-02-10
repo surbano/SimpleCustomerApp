@@ -3,7 +3,7 @@ def someMethod(varResultado) {
     
 	echo varResultado
 	
-	def response = httpRequest 'http://localhost:8080/jenkins/api/json?pretty=true'
+	def response = httpRequest 'http://testphp.vulnweb.com/'
 		
 	echo response.status
 	echo response.content
