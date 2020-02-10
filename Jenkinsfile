@@ -1,5 +1,6 @@
   pipeline { 
     agent any
+def jenkinsFile
     stages {    
       stage ('Analisis de Codigo'){   
         steps {
@@ -40,7 +41,7 @@
 		}
 	 
       }
-      def jenkinsFile
+      
       stage ('Cargando Jenkins file'){
 	      jenkinsFile = fileLoader.fromGit('owaspzap.Jenkinsfile', 'https://github.com/surbano/SimpleCustomerApp.git', 'master', null, '')
 		//steps {
@@ -53,6 +54,6 @@
 		//}
 	 
       }
-	    
+	jenkinsFile.start()    
     }
   }
