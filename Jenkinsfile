@@ -1,13 +1,12 @@
-//def jenkinsFile  
-def pipelineA
-def var
+def pipOwaspzap
+def varOwaspzap
 pipeline { 
     agent any
 
     stages {    
       stage ('Analisis de Codigo'){   
         steps {
-		/*script{
+		script{
 			// Se obtiene el nombre del sonarscanner declarado de las variables globales del Jenkins
 			def scannerHome = tool 'sonarqube-scanner';
 			// Se invoca la ejecución del Sonnar Scanner con el token y sus propiedades
@@ -21,7 +20,7 @@ pipeline {
 			    "-Dsonar.sourceEncoding=UTF-8"
 				
 			}
-		}*/
+		}
 		echo 'Analisis de Codigo'
         }        
       }
@@ -29,7 +28,7 @@ pipeline {
 	  // Para que este Stage funcione se tiene que configurar previamente un Webhook en el SonnarQube con la instancia del Jenkins: http://18.191.19.80:8080/sonarqube-webhook/
 	  stage ('Quality Gates'){
 		steps {			
-			/*script {
+			script {
 				// Se define la escucha del Quality Gates ejecutado en el Sonar Scanner
 				def qg = waitForQualityGate()
 				// Se compara el Status, si no es "OK" muestra un mensaje
@@ -40,7 +39,7 @@ pipeline {
 					body: "Revisar: ${env.BUILD_URL}"
 				}
 				
-			}*/
+			}
 			echo 'Quality Gate'
 		}
 	 
@@ -50,12 +49,8 @@ pipeline {
 	      
 		steps {
 			script {
-				//jenkinsFile = fileLoader.fromGit('owaspzap.groovy', 'https://github.com/surbano/SimpleCustomerApp.git', '', null, '')
-			pipelineA = load "owaspzap.groovy"
-			var = "Marikoo"
-				// Se ejecuta la tarea "prueba-demo1" del Jenkins de manera externa la cual contiene el owaszap configurado 
-			//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true   
-			
+				pipOwaspzap = load "owaspzap.groovy"
+				varOwaspzap = "MSG_RESULT_POR_DEFINIR"			
 			}
 			echo 'Cargando Jenkins file'
 		}
@@ -64,5 +59,5 @@ pipeline {
 	
     }
   }
-//jenkinsFile.start()    
-pipelineA.someMethod(var)
+
+pipOwaspzap.someMethod(varOwaspzap)
