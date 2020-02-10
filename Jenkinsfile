@@ -6,7 +6,7 @@ pipeline {
     stages {    
       stage ('Analisis de Codigo'){   
         steps {
-		script{
+		/*script{
 			// Se obtiene el nombre del sonarscanner declarado de las variables globales del Jenkins
 			def scannerHome = tool 'sonarqube-scanner';
 			// Se invoca la ejecución del Sonnar Scanner con el token y sus propiedades
@@ -20,7 +20,7 @@ pipeline {
 			    "-Dsonar.sourceEncoding=UTF-8"
 				
 			}
-		}
+		}*/
 		echo 'Analisis de Codigo'
         }        
       }
@@ -28,7 +28,7 @@ pipeline {
 	  // Para que este Stage funcione se tiene que configurar previamente un Webhook en el SonnarQube con la instancia del Jenkins: http://18.191.19.80:8080/sonarqube-webhook/
 	  stage ('Quality Gates'){
 		steps {			
-			script {
+			/*script {
 				// Se define la escucha del Quality Gates ejecutado en el Sonar Scanner
 				def qg = waitForQualityGate()
 				varOwaspzap = qg.status
@@ -40,7 +40,7 @@ pipeline {
 					body: "Revisar: ${env.BUILD_URL}"
 				}
 				
-			}
+			}*/
 			echo 'Quality Gate'
 		}
 	 
