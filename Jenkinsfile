@@ -50,7 +50,7 @@ pipeline {
 	      
 		steps {
 			script {
-				pipOwaspzap = load "jkile-owaspzap"		
+				pipOwaspzap = load "jfile-owaspzap"		
 			}
 			echo 'Cargando Jenkins file'
 		}
