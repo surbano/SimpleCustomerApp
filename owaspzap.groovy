@@ -1,4 +1,4 @@
-script { 
+node { 
 	echo 'mariko'
     //stages {    	  
 	 
