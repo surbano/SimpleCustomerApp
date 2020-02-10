@@ -1,6 +1,6 @@
 def someMethod() {
     //do something
-	echo 'mariko
+	echo 'mariko'
 }
 
 return this
