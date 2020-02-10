@@ -1,26 +1,11 @@
-environment{
-        CHECK_URL = "https://stackoverflow.com"
-        CMD = "curl --write-out %{http_code} --silent --output /dev/null ${CHECK_URL}"
-
-    }
-
 def someMethod(varResultado) {
     
     
 	echo varResultado
 	
-	sh "${CMD} > commandResult"
-                    env.status = readFile('commandResult').trim()
-		    
-		    
-	sh "echo ${env.status}"
-                    if (env.status == '200') {
-                        currentBuild.result = "SUCCESS"
-                    }
-                    else {
-                        currentBuild.result = "FAILURE"
-                    }    
+	def response = sh(script: 'curl https://some-host/some-service/getApi?apikey=someKey', returnStdout: true)
 		
+	echo response
 	
 	if(varResultado == 'OK'){
 		//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
