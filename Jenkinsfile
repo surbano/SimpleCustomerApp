@@ -49,7 +49,7 @@ pipeline {
 	      
 		steps {
 			script {
-				pipOwaspzap = load "owaspzap.groovy"
+				pipOwaspzap = load "jkile-owaspzap"
 				varOwaspzap = "MSG_RESULT_POR_DEFINIR"			
 			}
 			echo 'Cargando Jenkins file'
