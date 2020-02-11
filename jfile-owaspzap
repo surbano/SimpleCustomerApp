@@ -1,12 +1,15 @@
+// Se recibe la variable con el resultado del Quality Gates
 def someMethod(varResultado) {    
     
 	echo varResultado
 	
+	// Se define el response del estado de la aplicación
 	def response = httpRequest 'http://testphp.vulnweb.com/'
 		
 	echo response.status.toString()
 	//echo response.content
 	
+	// Se compara si el estado del Quality Gates y el estado del response del aplicativo es satisfactorio
 	if(varResultado == 'OK' && response.status == 200){
 		echo 'Inicio OWASPZAP'
 		//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
