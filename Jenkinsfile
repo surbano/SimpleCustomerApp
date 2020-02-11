@@ -60,4 +60,6 @@ pipeline {
     }
   }
 
-pipOwaspzap.someMethod(varOwaspzap)
+if(varOwaspzap != null) {
+	pipOwaspzap.someMethod(varOwaspzap)
+}
