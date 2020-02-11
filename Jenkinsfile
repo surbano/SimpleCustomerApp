@@ -1,5 +1,8 @@
+// Se define la variable que almacerá la carga del Jenkinsfile que ejecutará el Owaspzap
 def pipOwaspzap
+// Se define la variable donde se almacenará el resultado del Quality Gates
 def varOwaspzap
+
 pipeline { 
     agent any
 
@@ -31,7 +34,8 @@ pipeline {
 			script {
 				// Se define la escucha del Quality Gates ejecutado en el Sonar Scanner
 				def qg = waitForQualityGate()
-				//varOwaspzap = qg.status
+				// Se almacena el estado del Quality Gates en la variable global que se enviará al JenkinsFile del OZAP
+				varOwaspzap = qg.status
 				// Se compara el Status, si no es "OK" muestra un mensaje
 				if (qg.status != 'OK') {
 					error "Pipeline abortado debido a la falla del QG: ${qg.status}"
@@ -50,6 +54,7 @@ pipeline {
 	      
 		steps {
 			script {
+				// Se instancia la carga del jenkinsfile que ejecutará el Owaspzap
 				pipOwaspzap = load "jfile-owaspzap"		
 			}
 			echo 'Cargando Jenkins file'
@@ -60,6 +65,7 @@ pipeline {
     }
   }
 
+// Se invoca al método que se encuentra en el jenkisfile que ejecutará el Owaspzap enviándole la variable del resultado
 if(varOwaspzap != null) {
 	pipOwaspzap.someMethod(varOwaspzap)
 }
