@@ -12,7 +12,7 @@ def someMethod(varResultado) {
 	// Se compara si el estado del Quality Gates y el estado del response del aplicativo es satisfactorio
 	if(varResultado == 'OK' && response.status == 200){
 		echo 'INICIO_EJECUCION_OWASPZAP'
-		build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
+		//build job:  '/prueba-demo1', parameters: [string(name: 'param1', value:'val1')], wait: true  
 		return 'EJECUCION_OWASPZAP_EXITOSA'
 	}
 	
