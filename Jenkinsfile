@@ -1,9 +1,20 @@
+import java.text.SimpleDateFormat
+import java.util.Calendar
+
 // Se define la variable que almacerá la carga del Jenkinsfile que ejecutará el Owaspzap
 def pipOwaspzap
 // Se define la variable donde se almacenará el resultado del Quality Gates
 def varOwaspzap
 // Se define la variable donde se almacenará el resultado de la ejecución del OWASPZAP
 def resOwaszap
+// Se define el nombre del archivo csv y a la vez de la carpeta donde se guardara el reporte del JMETER
+def varNomRepoJMETER
+def dateFormat
+def date
+def dateAfterFiveMin
+def timeunits
+def formattedDate
+
 pipeline { 
     agent any
 
@@ -86,10 +97,18 @@ pipeline {
       stage ('Reporte Físico JMETER'){
 		    
 	      steps {
+		      script {			      
+			    date = Calendar.getInstance();
+			    timeunits= date.getTimeInMillis();
+			    dateAfterFiveMin=new Date(timeunits + (5 * 60000));
+			    dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+			    varNomRepoJMETER = dateFormat.format(dateAfterFiveMin)
+		      }		      
+		      
 		      sh '''
 			    cd /opt/JMETER
 			    cd bin
-			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + 'mariko' + '''.csv -e -o /opt/grabaciones/''' + 'mariko' + '''
+			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /opt/grabaciones/''' + varNomRepoJMETER + '''
 			'''	
 	      }
       }
