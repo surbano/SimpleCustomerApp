@@ -82,6 +82,18 @@ pipeline {
 		      }	
 	      }
       }
+	    
+      stage ('Reporte Físico JMETER'){
+		    
+	      steps {
+		      sh '''
+			    cd /opt/JMETER
+			    cd bin
+			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/$(date +%y%m%d%H%M%S%N).csv -e -o /opt/grabaciones/$(date +%y%m%d%H%M%S%N)
+			'''	
+	      }
+      }
+	    
 	      	      
       }
   
