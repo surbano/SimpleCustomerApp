@@ -107,8 +107,8 @@ pipeline {
 			    cd bin
 			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /var/lib/jenkins/workspace/pipeline-demo/reportes/''' + varNomRepoJMETER + '''
 			'''	
-	      	      echo '${WORKSPACE}'
-	      	      echo '${WORKSPACE}/reportes/'+varNomRepoJMETER+'/index.html'
+	      	      echo "${WORKSPACE}"
+	      	      echo "${WORKSPACE}/reportes/"+varNomRepoJMETER+"/index.html"
 	      }
       }
 	    
