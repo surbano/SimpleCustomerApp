@@ -65,8 +65,19 @@ pipeline {
 		}
 	 
       }
-	
-    }
+      
+      stage ('Ejecutando JMETER'){
+		    
+	      steps {
+		      script {
+			      if(resOwaszap != null){
+					echo 'Inicio JMETER'
+					build job:  '/prueba-jmeter', parameters: [string(name: 'param1', value:'val1')], wait: true 
+		      
+		      }		      
+	      }
+	      	      
+      }
   }
 
 
