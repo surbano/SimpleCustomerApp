@@ -1,5 +1,5 @@
-import java.text.SimpleDateFormat
-import java.util.Calendar
+import java.time.*
+import java.time.format.DateTimeFormatter
 
 // Se define la variable que almacerá la carga del Jenkinsfile que ejecutará el Owaspzap
 def pipOwaspzap
@@ -98,11 +98,8 @@ pipeline {
 		    
 	      steps {
 		      script {			      
-			    date = Calendar.getInstance();
-			    timeunits= date.getTimeInMillis();
-			    dateAfterFiveMin=new Date(timeunits + (5 * 60000));
-			    dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-			    varNomRepoJMETER = dateFormat.format(dateAfterFiveMin)
+			    date = LocalDateTime.now()
+			    varNomRepoJMETER = date.format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
 		      }		      
 		      
 		      sh '''
