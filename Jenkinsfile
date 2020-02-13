@@ -2,6 +2,7 @@
 def pipOwaspzap
 // Se define la variable donde se almacenará el resultado del Quality Gates
 def varOwaspzap
+// Se define la variable donde se almacenará el resultado de la ejecución del OWASPZAP
 def resOwaszap
 pipeline { 
     agent any
@@ -24,7 +25,7 @@ pipeline {
 				
 			}
 		}
-		echo 'Analisis de Codigo'
+		echo 'ANALISIS_DE_CODIGO_HECHO'
         }        
       }
 	  
@@ -45,7 +46,7 @@ pipeline {
 				}
 				
 			}
-			echo 'Quality Gate'
+			echo 'QUALITY_GATE_COMPROBADO'
 		}
 	 
       }
@@ -70,12 +71,14 @@ pipeline {
 		    
 	      steps {
 		      script {
-			      if(resOwaszap != null){
-					echo 'Inicio JMETER'
+			      // Se valida que el resultado de la ejecución del OWASPZAP se haya ejecutado
+			      if(resOwaszap != null){					
+				      	// Se invoca la tarea donde se encuentra la ejecución del JMETER
 					build job:  '/prueba-jmeter', parameters: [string(name: 'param1', value:'val1')], wait: true
+				      	echo 'JMETER_EJECUTADO'
 			      }
 		      
-		      }		      
+		      }	
 	      }
       }
 	      	      
