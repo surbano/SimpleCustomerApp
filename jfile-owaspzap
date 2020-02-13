@@ -18,4 +18,4 @@ def someMethod(varResultado) {
 	return 'mariko'
 }
 
-//return this
+return this
