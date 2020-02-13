@@ -2,7 +2,7 @@
 def pipOwaspzap
 // Se define la variable donde se almacenará el resultado del Quality Gates
 def varOwaspzap
-
+def resOwaszap
 pipeline { 
     agent any
 
@@ -55,19 +55,18 @@ pipeline {
 		steps {
 			script {
 				// Se instancia la carga del jenkinsfile que ejecutará el Owaspzap
-				pipOwaspzap = load "jfile-owaspzap"		
+				pipOwaspzap = load "jfile-owaspzap"	
+				// Se invoca al método que se encuentra en el jenkisfile que ejecutará el Owaspzap enviándole la variable del resultado
+				if(varOwaspzap != null) {
+					resOwaszap =pipOwaspzap.someMethod(varOwaspzap)
+				}
 			}
-			echo 'Cargando Jenkins file'
+			echo resOwaszap
 		}
 	 
       }
 	
     }
   }
-def resOwaszap
-// Se invoca al método que se encuentra en el jenkisfile que ejecutará el Owaspzap enviándole la variable del resultado
-if(varOwaspzap != null) {
-	resOwaszap =pipOwaspzap.someMethod(varOwaspzap)
-}
 
-echo resOwaszap
+
