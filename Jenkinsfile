@@ -67,7 +67,6 @@ pipeline {
 def resOwaszap
 // Se invoca al método que se encuentra en el jenkisfile que ejecutará el Owaspzap enviándole la variable del resultado
 if(varOwaspzap != null) {
-	echo resOwaszap
 	resOwaszap =pipOwaspzap.someMethod(varOwaspzap)
 }
 
