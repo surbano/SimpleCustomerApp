@@ -16,4 +16,4 @@ def someMethod(varResultado) {
 	}	
 }
 
-return """éxito"""
+return this
