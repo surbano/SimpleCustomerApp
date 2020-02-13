@@ -107,8 +107,21 @@ pipeline {
 			    cd bin
 			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /var/lib/jenkins/workspace/pipeline-demo/reportes/''' + varNomRepoJMETER + '''
 			'''	
-	      	      echo "${env.BUILD_URL}"
-	      	      echo "${env.BUILD_URL}/reportes/"+varNomRepoJMETER+"/index.html"
+	      	      
+	      }
+	      
+	      post {
+		success {
+		  // publish html
+		  publishHTML target: [
+		      allowMissing: false,
+		      alwaysLinkToLastBuild: false,
+		      keepAll: true,
+		      reportDir: 'reportes/' + varNomRepoJMETER,
+		      reportFiles: 'index.html',
+		      reportName: 'RCov Report'
+		    ]
+		}
 	      }
       }
 	    
