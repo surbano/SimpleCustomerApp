@@ -11,6 +11,7 @@ pipeline {
       stage ('Analisis de Codigo'){   
         steps {
 		script{
+			echo 'INICIO_ANALISIS_DE_CODIGO'
 			// Se obtiene el nombre del sonarscanner declarado de las variables globales del Jenkins
 			def scannerHome = tool 'sonarqube-scanner';
 			// Se invoca la ejecución del Sonnar Scanner con el token y sus propiedades
