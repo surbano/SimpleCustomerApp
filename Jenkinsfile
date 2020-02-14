@@ -124,7 +124,7 @@ pipeline {
 		      reportName: 'RCov Report'
 		    ]
 		
-		   eco 'http://3.12.183.140:8080/job/pipeline-demo/RCov_20Report/' +varNomRepoJMETER+ '.zip'
+		   echo 'http://3.12.183.140:8080/job/pipeline-demo/RCov_20Report/' +varNomRepoJMETER+ '.zip'
 		}
 	      }
       }
