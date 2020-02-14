@@ -6,9 +6,10 @@ global:
   jkd: 8
 qa:
   route1:
-    after_build:
-    before_deploy:
-    deploy:
-    after_deploy:
+    build:
+      sonarQubeScan:
+        projectKey: Valaxy
+        projectName: ValaxyDemo
+        projectVersion: 1.0
   qa:
   route2:
