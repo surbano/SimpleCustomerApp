@@ -120,12 +120,12 @@ pipeline {
 		      alwaysLinkToLastBuild: false,
 		      keepAll: true,
 		      reportDir: 'reportes/' + varNomRepoJMETER,
-		      reportFiles: 'index.html',
+		      reportFiles: varNomRepoJMETER+ '.zip',
 		      reportName: 'RCov Report'
 		    ]
 		
 		   echo 'http://3.12.183.140:8080/job/pipeline-demo/RCov_20Report/' +varNomRepoJMETER+ '.zip'
-		   echo InetAddress.localHost.canonicalHostName
+		   //echo InetAddress.localHost.canonicalHostName
 		}
 	      }
       }
