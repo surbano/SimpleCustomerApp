@@ -106,7 +106,9 @@ pipeline {
 			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /var/lib/jenkins/workspace/pipeline-demo/reportes/''' +varNomRepoJMETER+ '''
 			    cd /var/lib/jenkins/workspace/pipeline-demo/reportes/
 			    zip -r ''' +varNomRepoJMETER+ '''/''' +varNomRepoJMETER+ '''.zip ''' +varNomRepoJMETER+ '''
-			'''	
+			'''
+		      
+		      echo 'REPORTE_JEMETER.ZIP_GENERADO'
 	      	      
 	      }
 	      // Se copia el reporte en la ruta para descargarlo
@@ -122,6 +124,7 @@ pipeline {
 		      reportName: 'Descargar Reporte de Rendimiento'
 		    ]
 		}
+		echo 'REPORTE_JEMETER.ZIP_LISTO_DESCARGA'
 	      }
       }
 	    
