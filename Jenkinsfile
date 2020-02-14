@@ -29,7 +29,7 @@ pipeline {
 			    "-Dsonar.projectName=ValaxyDemo " +
 			    "-Dsonar.projectVersion=1.0 " +
 		 	    "-Dsonar.java.binaries=. " +
-			    "-Dsonar.sources=/var/lib/jenkins/workspace/pipeline-demo/SimpleCustomerApp/src " +
+			    "-Dsonar.sources=/var/lib/jenkins/workspace/pipeline-demo/src " +
 			    "-Dsonar.sourceEncoding=UTF-8"
 				
 			}
