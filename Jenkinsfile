@@ -123,8 +123,9 @@ pipeline {
 		      reportFiles: varNomRepoJMETER+ '.zip',
 		      reportName: 'Descargar Reporte de Rendimiento'
 		    ]
-		}
 		echo 'REPORTE_JEMETER.ZIP_LISTO_DESCARGA'
+		}
+		
 	      }
       }
 	    
