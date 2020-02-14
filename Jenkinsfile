@@ -125,6 +125,7 @@ pipeline {
 		    ]
 		
 		   echo 'http://3.12.183.140:8080/job/pipeline-demo/RCov_20Report/' +varNomRepoJMETER+ '.zip'
+		   echo InetAddress.localHost.canonicalHostName
 		}
 	      }
       }
