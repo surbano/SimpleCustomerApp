@@ -9,11 +9,8 @@ def varOwaspzap
 def resOwaszap
 // Se define el nombre del archivo csv y a la vez de la carpeta donde se guardara el reporte del JMETER
 def varNomRepoJMETER
-def dateFormat
+// Se define la variable donde se almacenara la fecha actual
 def date
-def dateAfterFiveMin
-def timeunits
-def formattedDate
 
 pipeline { 
     agent any
@@ -97,11 +94,12 @@ pipeline {
       stage ('Reporte Físico JMETER'){
 		    
 	      steps {
+		      // Se obtiene el nombre del Reporte de JMETER con la fecha actual
 		      script {			      
 			    date = LocalDateTime.now()
 			    varNomRepoJMETER = date.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"))
 		      }		      
-		      
+		      // Se ejecuta el JMETER mediante comando shell y se genera el reporte en .ZIP
 		      sh '''
 			    cd /opt/JMETER
 			    cd bin
@@ -111,7 +109,7 @@ pipeline {
 			'''	
 	      	      
 	      }
-	      
+	      // Se copia el reporte en la ruta para descargarlo
 	      post {
 		success {
 		  // publish html
@@ -121,11 +119,8 @@ pipeline {
 		      keepAll: true,
 		      reportDir: 'reportes/' + varNomRepoJMETER,
 		      reportFiles: varNomRepoJMETER+ '.zip',
-		      reportName: 'RCov Report'
+		      reportName: 'Descargar Reporte de Rendimiento'
 		    ]
-		
-		   echo 'http://3.12.183.140:8080/job/pipeline-demo/RCov_20Report/' +varNomRepoJMETER+ '.zip'
-		   //echo InetAddress.localHost.canonicalHostName
 		}
 	      }
       }
