@@ -1,0 +1,5 @@
+---
+global:
+  tech: websphere
+  language: java
+  jkd: 8
