@@ -1,12 +1,12 @@
 // Se recibe la variable con el resultado del Quality Gates
 def someMethod(varResultado) {    
     
-	echo varResultado
+	echo 'RESULTADO_QUALITY_GATES: ' + varResultado
 	
 	// Se define el response del estado de la aplicación
 	def response = httpRequest 'http://testphp.vulnweb.com/'
 		
-	echo response.status.toString()
+	echo 'RESULTADO_RESPONSE_APP: ' + response.status.toString()
 	//echo response.content
 	
 	// Se compara si el estado del Quality Gates y el estado del response del aplicativo es satisfactorio
