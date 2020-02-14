@@ -7,19 +7,8 @@ global:
 qa:
   route1:
     after_build:
-      mvn: test
-      sonarQubeScan:
-        sources: src
-        java.binaries: target
-        externalIssuesReportPaths: .scannerwork/
     before_deploy:
-      veracodeScan:
-        upload: target/*.war
     deploy:
-      tomcat:
     after_deploy:
-      artifactoryUpld: target/*.war, pom.xml
   qa:
-    build:
-      mvn: package -U -DskipTests -Dmaven.test.skip=true
   route2:
