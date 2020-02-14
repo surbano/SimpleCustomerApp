@@ -105,7 +105,7 @@ pipeline {
 		      sh '''
 			    cd /opt/JMETER
 			    cd bin
-			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /var/lib/jenkins/workspace/pipeline-demo/reportes/''' + /var/lib/jenkins/workspace/pipeline-demo/reportes/ + '''
+			    sh jmeter.sh -Jjmeter.save.saveservice.output_format=csv -n -t /opt/grabaciones/testphp.vulnweb.com.jmx -l /opt/grabaciones/''' + varNomRepoJMETER + '''.csv -e -o /var/lib/jenkins/workspace/pipeline-demo/reportes/''' +varNomRepoJMETER+ '''
 			    cd /var/lib/jenkins/workspace/pipeline-demo/reportes/
 			    zip -r ''' +varNomRepoJMETER+ '''/''' +varNomRepoJMETER+ '''.zip ''' +varNomRepoJMETER+ '''
 			'''	
