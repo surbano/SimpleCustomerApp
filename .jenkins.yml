@@ -7,6 +7,6 @@ production:
   route1:
     build:
       sonarQubeScan:
-        sources: SimpleCustomerApp/build/
+        sources: SimpleCustomerApp/build
         projectKey: SimpleCustomerApp
         projectName: SCA
