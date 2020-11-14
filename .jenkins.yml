@@ -2,8 +2,8 @@
 global:
   tech: websphere
   language: java
-  jkd: 8
-master:
+  jkd: 9
+production:
   route1:
     build:
       sonarQubeScan:
