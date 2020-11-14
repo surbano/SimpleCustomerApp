@@ -7,6 +7,6 @@ qa:
   route1:
     build:
       sonarQubeScan:
-        sources: appSGDAWeb/src
+        sources: SimpleCustomerApp/build/
         projectKey: SimpleCustomerApp
         projectName: SCA
