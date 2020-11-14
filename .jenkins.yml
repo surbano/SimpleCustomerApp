@@ -3,3 +3,10 @@ global:
   tech: websphere
   language: java
   jkd: 8
+qa:
+  route1:
+    build:
+      sonarQubeScan:
+        sources: appSGDAWeb/src
+        projectKey: SimpleCustomerApp
+        projectName: SCA
