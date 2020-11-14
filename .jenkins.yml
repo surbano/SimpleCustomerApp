@@ -2,7 +2,7 @@
 global:
   tech: websphere
   language: java
-  jkd: 9
+  jkd: 8
 production:
   route1:
     build:
