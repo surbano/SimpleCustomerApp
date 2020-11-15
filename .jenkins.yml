@@ -7,6 +7,6 @@ production:
   route1:
     build:
       sonarQubeScan:
-        sources: /var/lib/jenkins/workspace/DEMO_PROYECTOS/route-1/src
+        sources: /home/jenkins-slave-01/workspace/DEMO_PROYECTOS/route-1/src
         projectKey: SimpleCustomerApp
         projectName: SCA
